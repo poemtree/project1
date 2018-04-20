@@ -22,38 +22,45 @@ public class MemberController {
 	Biz<Member, String> biz;
 	
 	@RequestMapping("itsMe.do")
-	@ResponseBody
 	public void selectMember(HttpServletResponse res, String id, String pwd) {
 		HashMap<String, Object> map = new HashMap<>();
 		PrintWriter out=null;
 		try {
 			out = res.getWriter();
+			map.put("id", id);
+			map.put("pwd", pwd);
+			System.out.printf("Call servlet %s, %S\n",id,pwd);
+			Member itsMe = biz.login(map);
+			System.out.printf("itsMe %s, %S\n",itsMe.getId(),itsMe.getPwd());
+			out.println("1");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		map.put("id", id);
-		map.put("pwd", pwd);
-		System.out.printf("Call servlet %s, %S\n",id,pwd);
-		Member itsMe = biz.login(map);
-		System.out.printf("itsMe %s, %S\n",itsMe.getId(),itsMe.getPwd());
-		if(itsMe.getId().equals("") && itsMe.getId().isEmpty()) {
+		} catch (NullPointerException e) {
 			out.println("2");
-		} else {
-			out.println("1");
+		} finally {
+			out.close();
 		}
 		
 	}
 	
 	@RequestMapping("registerMember.do")
-	public String registerMember(Model m, Member newbie) {
-		biz.register(newbie);
+	public void registerMember(HttpServletResponse res, Model m, Member newbie) {
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("id", newbie.getId());
-		map.put("pwd", newbie.getPwd());
-		Member itsMe = biz.login(map);
-		m.addAttribute("itsMe", itsMe);
-		return "myInfo";
+		PrintWriter out=null;
+		try {
+			out = res.getWriter();
+			biz.register(newbie);
+			out.write("1");
+		} catch (IOException ie) {
+			// TODO Auto-generated catch block
+			ie.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+			out.write("2");
+		} finally {
+			out.close();
+		}		
 	}
 	
 }

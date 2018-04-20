@@ -6,11 +6,13 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias type="com.vo.Member" alias="member"/>
 		<typeAlias type="com.vo.Score" alias="score"/>
+		<typeAlias type="com.vo.Game" alias="game"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/config/membermapper.xml"/>
 		<mapper resource="com/config/scoremapper.xml"/>
+		<mapper resource="com/config/gamemapper.xml"/>
 	</mappers>
 </configuration>
 

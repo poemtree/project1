@@ -17,14 +17,13 @@ public class ScoreController {
 	Biz<Score, String> biz;
 	
 	@RequestMapping("inputScore.do")
-	public String inputScroe(Model m, Score s) {
+	public void inputScroe(Model m, Score s) {
 		System.out.print(s.toString());
 		biz.register(s);
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("game_num", s.getGame_num());
 		map.put("id", s.getId());
 		m.addAttribute("myScore", biz.login(map));
-		return "score";
 	}
 	
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.GameMapper">
+	<resultMap type="Game" id="gameResult">
+		<result column="game_num" property="game_num"/>
+		<result column="regdate" property="regdate"/>
+		<result column="title" property="title"/>
+		<result column="game_master" property="game_master"/>
+	</resultMap>
+		
+	<select id="select" parameterType="String" resultMap="gameResult">
+		SELECT game_num, regdate, title, game_master FROM game WHERE game_num = (SELECT MAX(game_num) FROM GAME GROUP BY game_master HAVING game_master='#{obj}')
+	</select>
+	<insert id="insert" parameterType="Game">
+		INSERT INTO GAME VALUES (game_SEQ.NEXTVAL,SYSDATE,#{title}, #{game_master})
+	</insert>
+	<update id="update" parameterType="Game">
+		UPDATE GAME SET title=#{title} WHERE game_num=#{game_num}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM GAME WHERE game_num=#{obj}
+	</delete>
+
+</mapper>
