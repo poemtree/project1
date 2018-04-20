@@ -37,12 +37,12 @@ int count=0;
     resultlat+=rs.getString("lat");
     resultlog+=rs.getString("log");
     count++;
-/*      out.println("<tr>");
-     out.println("<td>"+rs.getString("center_seq")+"</td>");
-     out.println("<td>"+rs.getString("center_name")+"</td>");
-     out.println("<td>"+rs.getString("lat")+"</td>");
-     out.println("<td>"+rs.getString("log")+"</td>");
-     out.println("</tr>"); */
+    out.println("<tr>");
+    out.println("<td>"+rs.getString("center_seq")+"</td>");
+    out.println("<td>"+rs.getString("center_name")+"</td>");
+    out.println("<td>"+rs.getString("lat")+"</td>");
+    out.println("<td>"+rs.getString("log")+"</td>");
+    out.println("</tr>");
  }
 out.println(resultlat+resultlog+store+"/"+count);
 System.out.println(resultlat+resultlog+store+"/"+count);
