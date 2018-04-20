@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ScoreMapper">
+	<resultMap type="Score" id="scoreResult">
+		<result column="score_seq" property="score_seq"/>
+		<result column="id" property="id"/>
+		<result column="regdate" property="regdate"/>
+		<result column="game_num" property="game_num"/>
+		<result column="set1" property="set1"/>
+		<result column="set2" property="set2"/>
+		<result column="set3" property="set3"/>
+		<result column="set4" property="set4"/>
+		<result column="set5" property="set5"/>
+		<result column="set6" property="set6"/>
+		<result column="set7" property="set7"/>
+		<result column="set8" property="set8"/>
+		<result column="set9" property="set9"/>
+		<result column="set10" property="set10"/>
+		<result column="strike" property="strike"/>
+		<result column="spare" property="spare"/>
+	</resultMap>
+		
+	<select id="select" parameterType="String" resultMap="scoreResult">
+		SELECT score_seq, id, regdate, game_num, set1, set2, set3, set4, set5, set6, set7, set8, set9, set10, strike, spare FROM Score WHERE id=#{obj}
+	</select>
+	<select id="selectall" parameterType="String" resultType="Member">
+		SELECT score_seq, id, regdate, game_num, set1, set2, set3, set4, set5, set6, set7, set8, set9, set10, strike, spare FROM Score WHERE id=#{obj}
+	</select>
+	<insert id="insert" parameterType="Score">
+		<selectKey keyProperty="scoreResult" resultType="int" order="BEFORE" statementType="PREPARED">SELECT score_SEQ.NEXTVAL FROM DUAL</selectKey>
+		INSERT INTO SCORE VALUES (#{score_seq},#{id},#{regdate},#{game_num},#{set1},#{set2},#{set3},#{set4},#{set5},#{set6},#{set7},#{set8},#{set9},#{set10},#{strike},#{spare})
+	</insert>
+	<update id="update" parameterType="Score">
+		UPDATE SCORE SET set1=#{set1},set2=#{set2},set3=#{set3},set4=#{set4},set5=#{set5},set6=#{set6},set7=#{set7},set8=#{set8},set9=#{set9},set10=#{set10},strike=#{strike},spare=#{spare} WHERE score_seq=#{obj}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM SCORE WHERE score_seq=#{obj}
+	</delete>
+
+</mapper>

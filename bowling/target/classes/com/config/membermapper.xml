@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.MemberMapper">
+	<resultMap type="Member" id="memberResult">
+		<result column="id" property="id"/>
+		<result column="pwd" property="pwd"/>
+		<result column="name" property="name"/>
+		<result column="tel" property="tel"/>
+		<result column="regdate" property="regdate"/>
+		<result column="photo" property="photo"/>
+	</resultMap>
+		
+	<select id="select" parameterType="String" resultMap="memberResult">
+		<!-- SELECT id, pwd, name, tel, regdate, photo FROM MEMBER WHERE id=  -->
+		SELECT id, pwd, name, tel, regdate FROM MEMBER WHERE id=#{obj}
+	</select>
+	<insert id="insert" parameterType="Member">
+		INSERT INTO MEMBER VALUES (#{id},#{pwd},#{name},#{tel},#{regdate},#{photo})
+	</insert>
+	<update id="update" parameterType="Member">
+		UPDATE MEMBER SET pwd=#{pwd},name=#{name},tel=#{tel} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM MEMBER WHERE ID=#{obj}
+	</delete>
+
+</mapper>

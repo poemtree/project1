@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.vo.Member" alias="member"/>
+		<typeAlias type="com.vo.Score" alias="score"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="com/config/membermapper.xml"/>
+		<mapper resource="com/config/scoremapper.xml"/>
+	</mappers>
+</configuration>
+
+
+
+
+
+
