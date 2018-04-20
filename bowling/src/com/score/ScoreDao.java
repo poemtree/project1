@@ -1,5 +1,6 @@
 package com.score;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,15 +37,19 @@ public class ScoreDao implements Dao<Score, String>{
 	@Override
 	public Score select(String s) {
 		// TODO Auto-generated method stub
-		return null;
+		return mapper.select(s);
 	}
 
 	@Override
-	public List<Score> select() {
+	public List<Score> selectAll(String s) {
 		// TODO Auto-generated method stub
-		return null;
+		return mapper.selectall(s);
 	}
 	
+	@Override
+	public Score selectLogin(HashMap<String, Object> map) {
+		return mapper.selectLogin(map);
+	}
 
 	
 }

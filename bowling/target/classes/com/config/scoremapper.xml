@@ -23,14 +23,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</resultMap>
 		
 	<select id="select" parameterType="String" resultMap="scoreResult">
-		SELECT score_seq, id, regdate, game_num, set1, set2, set3, set4, set5, set6, set7, set8, set9, set10, strike, spare FROM Score WHERE id=#{obj}
+		SELECT score_seq, id, regdate, game_num, set1, set2, set3, set4, set5, set6, set7, set8, set9, set10, strike, spare FROM Score WHERE game_num=#{obj}
+	</select>
+	<select id="selectLogin" parameterType="hashmap" resultMap="scoreResult">
+		SELECT score_seq, id, regdate, game_num, set1, set2, set3, set4, set5, set6, set7, set8, set9, set10, strike, spare FROM Score WHERE game_num=#{game_num} AND id=#{id}
 	</select>
 	<select id="selectall" parameterType="String" resultType="Member">
 		SELECT score_seq, id, regdate, game_num, set1, set2, set3, set4, set5, set6, set7, set8, set9, set10, strike, spare FROM Score WHERE id=#{obj}
 	</select>
 	<insert id="insert" parameterType="Score">
-		<selectKey keyProperty="scoreResult" resultType="int" order="BEFORE" statementType="PREPARED">SELECT score_SEQ.NEXTVAL FROM DUAL</selectKey>
-		INSERT INTO SCORE VALUES (#{score_seq},#{id},#{regdate},#{game_num},#{set1},#{set2},#{set3},#{set4},#{set5},#{set6},#{set7},#{set8},#{set9},#{set10},#{strike},#{spare})
+		INSERT INTO SCORE VALUES (score_SEQ.NEXTVAL, #{id}, SYSDATE, #{game_num}, #{set1}, #{set2}, #{set3}, #{set4}, #{set5}, #{set6}, #{set7}, #{set8}, #{set9}, #{set10}, #{strike}, #{spare})
 	</insert>
 	<update id="update" parameterType="Score">
 		UPDATE SCORE SET set1=#{set1},set2=#{set2},set3=#{set3},set4=#{set4},set5=#{set5},set6=#{set6},set7=#{set7},set8=#{set8},set9=#{set9},set10=#{set10},strike=#{strike},spare=#{spare} WHERE score_seq=#{obj}

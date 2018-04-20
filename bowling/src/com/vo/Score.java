@@ -145,5 +145,8 @@ public class Score {
 	public void setSpare(int spare) {
 		this.spare = spare;
 	}
-
+	
+	public String toString() {
+		return getId() + getSet10() + getStrike() + getSpare();
+	}
 }

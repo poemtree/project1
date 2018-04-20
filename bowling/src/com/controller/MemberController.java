@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.util.HashMap;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -16,12 +18,24 @@ public class MemberController {
 	Biz<Member, String> biz;
 	
 	@RequestMapping("itsMe.do")
-	public String selectMember(Model m, String id) {
-		Member itsMe = biz.get(id);
+	public String selectMember(Model m, String id, String pwd) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		map.put("pwd", pwd);
+		Member itsMe = biz.login(map);
 		m.addAttribute("itsMe", itsMe);
-		return "myInfo";
-		
+		return "login";
 	}
 	
+	@RequestMapping("registerMember.do")
+	public String registerMember(Model m, Member newbie) {
+		biz.register(newbie);
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", newbie.getId());
+		map.put("pwd", newbie.getPwd());
+		Member itsMe = biz.login(map);
+		m.addAttribute("itsMe", itsMe);
+		return "myInfo";
+	}
 	
 }

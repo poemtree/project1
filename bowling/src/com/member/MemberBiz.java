@@ -1,5 +1,6 @@
 package com.member;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -41,9 +42,14 @@ public class MemberBiz implements Biz<Member, String> {
 	}
 
 	@Override
-	public List<Member> get() {
+	public List<Member> getAll(String s) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public Member login(HashMap<String, Object> map) {
+		return dao.selectLogin(map);
 	}
 
 }

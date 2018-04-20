@@ -1,8 +1,7 @@
 package com.member;
 
+import java.util.HashMap;
 import java.util.List;
-
-import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,9 +41,13 @@ public class MemberDao implements Dao<Member, String>{
 	}
 
 	@Override
-	public List<Member> select() {
+	public List<Member> selectAll(String s) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public Member selectLogin(HashMap<String, Object> map) {
+		return mapper.selectLogin(map);
 	}
 
 }

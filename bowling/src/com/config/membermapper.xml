@@ -16,6 +16,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<!-- SELECT id, pwd, name, tel, regdate, photo FROM MEMBER WHERE id=  -->
 		SELECT id, pwd, name, tel, regdate FROM MEMBER WHERE id=#{obj}
 	</select>
+	<select id="selectLogin" parameterType="hashmap" resultMap="memberResult">
+		<!-- SELECT id, pwd, name, tel, regdate, photo FROM MEMBER WHERE id=  -->
+		SELECT id, pwd, name, tel, regdate FROM MEMBER WHERE id=#{id} AND pwd=#{pwd}
+	</select>
 	<insert id="insert" parameterType="Member">
 		INSERT INTO MEMBER VALUES (#{id},#{pwd},#{name},#{tel},#{regdate},#{photo})
 	</insert>

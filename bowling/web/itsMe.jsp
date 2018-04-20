@@ -22,6 +22,7 @@ $(document).ready(function(){
 <div>
 <form id="member_description">
 	ID : <input type='text' name="id" id="id">
+	PWD: <input type='text' name="pwd" id="pwd">
 	<br>
 	<input type="button" value="select" id="s_btn">
 </form>

@@ -1,5 +1,6 @@
 package com.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.vo.Score;
@@ -10,4 +11,5 @@ public interface ScoreMapper {
 	public void delete(String obj);
 	public void update(Score obj);
 	public List<Score> selectall(String obj);
+	public Score selectLogin(HashMap<String, Object> map);
 }
