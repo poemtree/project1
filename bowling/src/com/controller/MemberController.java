@@ -8,9 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.frame.Biz;
 import com.vo.Member;
@@ -45,19 +43,18 @@ public class MemberController {
 	}
 	
 	@RequestMapping("registerMember.do")
-	public void registerMember(HttpServletResponse res, Model m, Member newbie) {
-		HashMap<String, Object> map = new HashMap<>();
+	public void registerMember(HttpServletResponse res, Member newbie) {
 		PrintWriter out=null;
 		try {
 			out = res.getWriter();
 			biz.register(newbie);
-			out.write("1");
+			out.println("1");
 		} catch (IOException ie) {
 			// TODO Auto-generated catch block
 			ie.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.write("2");
+			out.println("2");
 		} finally {
 			out.close();
 		}		

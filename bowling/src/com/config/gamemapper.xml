@@ -11,7 +11,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</resultMap>
 		
 	<select id="select" parameterType="String" resultMap="gameResult">
-		SELECT game_num, regdate, title, game_master FROM game WHERE game_num = (SELECT MAX(game_num) FROM GAME GROUP BY game_master HAVING game_master='#{obj}')
+		SELECT game_num, regdate, title, game_master FROM game WHERE game_num=(SELECT MAX(game_num) FROM GAME GROUP BY game_master HAVING game_master=#{obj})
+	</select>
+	<select id="joinGame" parameterType="String" resultMap="gameResult">
+		SELECT game_num, regdate, title, game_master FROM game WHERE game_num=#{obj}
 	</select>
 	<insert id="insert" parameterType="Game">
 		INSERT INTO GAME VALUES (game_SEQ.NEXTVAL,SYSDATE,#{title}, #{game_master})

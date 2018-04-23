@@ -50,6 +50,11 @@ public class ScoreDao implements Dao<Score, String>{
 	public Score selectLogin(HashMap<String, Object> map) {
 		return mapper.selectLogin(map);
 	}
-
 	
+	public HashMap<String, Object> rankAvg(String s) {
+		return mapper.rankAvg(s);
+	}
+	public HashMap<String, Object> rankStrike(String s) {
+		return mapper.rankStrike(s);
+	}
 }

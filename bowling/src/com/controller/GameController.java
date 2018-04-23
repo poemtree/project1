@@ -7,10 +7,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.frame.Biz;
+import com.game.GameBiz;
 import com.vo.Game;
 
 @Controller
@@ -19,18 +19,38 @@ public class GameController {
 	Biz<Game, String> biz;
 	
 	@RequestMapping("openGame.do")
-	public void opemGame(HttpServletResponse res, Model m, Game newGame) {
+	public void opemGame(HttpServletResponse res, Game newGame) {
+		res.setCharacterEncoding("UTF-8");
 		PrintWriter out=null;
 		try {
 			out = res.getWriter();
 			biz.register(newGame);
-			out.write("1");
-		} catch (IOException e) {
+			out.print(biz.get(newGame.getGame_master()).toString());
+		} catch(IOException e) {
 			// TODO Auto-generated catch block
-			out.write("2");
 			e.printStackTrace();
+		} catch(Exception e) {
+			out.println("2");
 		} finally {
 			out.close();
 		}
 	}
+	
+	@RequestMapping("joinGame.do")
+	public void joinGame(HttpServletResponse res, String game_num) {
+		res.setCharacterEncoding("UTF-8");
+		PrintWriter out=null;
+		try {
+			out = res.getWriter();
+			out.print(((GameBiz)biz).joinGame(game_num).toString());
+		} catch(IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(Exception e) {
+			out.write("2");
+		} finally {
+			out.close();
+		}
+	}
+	
 }

@@ -147,6 +147,6 @@ public class Score {
 	}
 	
 	public String toString() {
-		return getId() + getSet10() + getStrike() + getSpare();
+		return "/" + this.id + "/" + this.set1 + "/" + this.set2 + "/" + this.set3 + "/" + this.set4 + "/" + this.set5 + "/" + this.set6 + "/" + this.set7 + "/" + this.set8 + "/" + this.set9 + "/" + this.set10 + "/" + this.strike + "/" + this.spare + "/";
 	}
 }

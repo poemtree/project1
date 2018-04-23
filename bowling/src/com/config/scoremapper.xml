@@ -28,9 +28,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectLogin" parameterType="hashmap" resultMap="scoreResult">
 		SELECT score_seq, id, regdate, game_num, set1, set2, set3, set4, set5, set6, set7, set8, set9, set10, strike, spare FROM Score WHERE game_num=#{game_num} AND id=#{id}
 	</select>
-	<select id="selectall" parameterType="String" resultType="Member">
+	<select id="selectall" parameterType="String" resultType="Score">
 		SELECT score_seq, id, regdate, game_num, set1, set2, set3, set4, set5, set6, set7, set8, set9, set10, strike, spare FROM Score WHERE id=#{obj}
-	</select>
+	</select>	
 	<insert id="insert" parameterType="Score">
 		INSERT INTO SCORE VALUES (score_SEQ.NEXTVAL, #{id}, SYSDATE, #{game_num}, #{set1}, #{set2}, #{set3}, #{set4}, #{set5}, #{set6}, #{set7}, #{set8}, #{set9}, #{set10}, #{strike}, #{spare})
 	</insert>
@@ -40,5 +40,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<delete id="delete" parameterType="String">
 		DELETE FROM SCORE WHERE score_seq=#{obj}
 	</delete>
-
+	<select id="rankAvg" parameterType="String" resultType="hashmap">
+		SELECT tot_avg, rank_avg FROM(SELECT id, tot_avg, RANK() OVER(ORDER BY tot_avg DESC) AS rank_avg FROM(SELECT id, AVG(set10) AS tot_avg FROM score GROUP BY id)) WHERE id=#{obj}
+	</select>
+	<select id="rankStrike" parameterType="String" resultType="hashmap">
+		SELECT strike_avg, strike_rank FROM(SELECT id, strike_avg, RANK() OVER(ORDER BY strike_avg DESC) AS strike_rank FROM(SELECT id, AVG(strike) AS strike_avg FROM score GROUP BY id)) WHERE id=#{obj}
+	</select>	
 </mapper>

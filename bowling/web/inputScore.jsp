@@ -22,20 +22,39 @@ $(document).ready(function(){
 <div>
 <form id="score_description">
 	ID : <input type='text' name="id" id="id">
-	PWD: <input type='text' name="game_num" id="game_num">
-	PWD: <input type='text' name="set1" id="set1">
-	PWD: <input type='text' name="set2" id="set2">
-	PWD: <input type='text' name="set3" id="set3">
-	PWD: <input type='text' name="set4" id="set4">
-	PWD: <input type='text' name="set5" id="set5">
-	PWD: <input type='text' name="set6" id="set6">
-	PWD: <input type='text' name="set7" id="set7">
-	PWD: <input type='text' name="set8" id="set8">
-	PWD: <input type='text' name="set9" id="set9">
-	PWD: <input type='text' name="set10" id="set10">
-	PWD: <input type='text' name="strike" id="strike">
-	PWD: <input type='text' name="spare" id="spare">
+	game_num : <input type='text' name="game_num" id="game_num">
 	<br>
-	<input type="button" value="select" id="s_btn">
+	SET1: <input type='text' name="set1" id="set1">
+	SET2: <input type='text' name="set2" id="set2">
+	SET3: <input type='text' name="set3" id="set3">
+	SET4: <input type='text' name="set4" id="set4">
+	SET5: <input type='text' name="set5" id="set5">
+	<br>
+	SET6: <input type='text' name="set6" id="set6">
+	SET7: <input type='text' name="set7" id="set7">
+	SET8: <input type='text' name="set8" id="set8">
+	SET9: <input type='text' name="set9" id="set9">
+	SET10: <input type='text' name="set10" id="set10">
+	<br>
+	STRIKE: <input type='text' name="strike" id="strike">
+	SPARE: <input type='text' name="spare" id="spare">
+	<br>
+	<input type="button" value="INSERT" id="s_btn">
 </form>
+test@test.com<br>
+aaa<br>
+a11<br>
+aaabbx<br>
+qwe<br>
+test1@test.com<br>
+test2@test.com<br>
+test3@test.com<br>
+bbb<br>
+ccc<br>
+ddd<br>
+aaas<br>
+test5@test.com<br>
+sss111<br>
+ccccc<br>
+12<br>
 </div>

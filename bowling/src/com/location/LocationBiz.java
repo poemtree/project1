@@ -1,4 +1,4 @@
-package com.game;
+package com.location;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,53 +9,52 @@ import org.springframework.stereotype.Service;
 
 import com.frame.Biz;
 import com.frame.Dao;
-import com.vo.Game;
+import com.vo.Location;
 
-@Service("gameBiz")
-public class GameBiz implements Biz<Game, String>{
-
-	@Resource(name="gameDao")
-	Dao<Game, String> dao;
+@Service("locationBiz")
+public class LocationBiz implements Biz<Location, String> {
+	
+	@Resource(name="locationDao")
+	Dao<Location, String> dao;	
 	
 	@Override
-	public void register(Game t) {
+	public void register(Location t) {
 		// TODO Auto-generated method stub
-		dao.insert(t);
+		
 	}
 
 	@Override
 	public void remove(String s) {
 		// TODO Auto-generated method stub
-		dao.delete(s);
+		
 	}
 
 	@Override
-	public void modify(Game t) {
+	public void modify(Location t) {
 		// TODO Auto-generated method stub
-		dao.update(t);
+		
 	}
 
 	@Override
-	public Game get(String s) {
-		// TODO Auto-generated method stub
-		return dao.select(s);
-	}
-
-	@Override
-	public List<Game> getAll(String s) {
+	public Location get(String s) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Game login(HashMap<String, Object> map) {
+	public List<Location> getAll(String s) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Location login(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	public Game joinGame(String s) {
-		return ((GameDao)dao).joinGame(s);
+	public List<Location> search(HashMap<String, Object> map) {
+		return ((LocationDao)dao).search(map);
 	}
-	
 
 }

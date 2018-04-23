@@ -12,4 +12,6 @@ public interface ScoreMapper {
 	public void update(Score obj);
 	public List<Score> selectall(String obj);
 	public Score selectLogin(HashMap<String, Object> map);
+	public HashMap<String, Object> rankAvg(String obj);
+	public HashMap<String, Object> rankStrike(String obj);
 }

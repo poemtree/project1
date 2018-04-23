@@ -10,4 +10,5 @@ public interface GameMapper {
 	public void insert(Game obj);
 	public void delete(String obj);
 	public void update(Game obj);
+	public Game joinGame(String obj);
 }

@@ -1,11 +1,13 @@
 package com.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.frame.Biz;
@@ -17,13 +19,20 @@ public class ScoreController {
 	Biz<Score, String> biz;
 	
 	@RequestMapping("inputScore.do")
-	public void inputScroe(Model m, Score s) {
-		System.out.print(s.toString());
-		biz.register(s);
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("game_num", s.getGame_num());
-		map.put("id", s.getId());
-		m.addAttribute("myScore", biz.login(map));
+	public void inputScroe(HttpServletResponse res, Score s) {
+		PrintWriter out = null;
+		try {
+			out = res.getWriter();
+			biz.register(s);
+			out.print("1");	
+		} catch (IOException ie) {
+			// TODO Auto-generated catch block
+			ie.printStackTrace();
+		} catch (Exception e) {
+			out.print("2");
+		} finally {
+			out.close();
+		}		
 	}
 	
 }

@@ -52,6 +52,13 @@ public class ScoreBiz implements Biz<Score, String>{
 		// TODO Auto-generated method stub
 		return dao.selectLogin(map);
 	}
-
+	
+	public HashMap<String, Object> rankAvg(String s) {
+		return ((ScoreDao)dao).rankAvg(s);
+	}
+	
+	public HashMap<String, Object> rankStrike(String s) {
+		return ((ScoreDao)dao).rankStrike(s);
+	}
 
 }

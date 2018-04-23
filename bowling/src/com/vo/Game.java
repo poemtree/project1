@@ -32,5 +32,7 @@ public class Game {
 		this.title = title;
 	}
     
-	
+	public String toString() {
+		return "/" + this.game_num + "/" + this.title + "/" + this.game_master + "/" + this.regdate+"/";
+	}
 }
